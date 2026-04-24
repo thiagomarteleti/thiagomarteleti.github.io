@@ -1,19 +1,17 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0d1117;
+  font-family: Arial, sans-serif;
+  background: #0b0f14;
   color: #c9d1d9;
 }
 
 header {
-  background: url('banner.png') no-repeat center;
-  background-size: cover;
-  height: 300px;
-  position: relative;
+  background: url('banner.png') center/cover no-repeat;
+  height: 280px;
 }
 
 .overlay {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -22,34 +20,36 @@ header {
   color: #00ff9c;
 }
 
-h1 {
-  font-size: 40px;
-}
-
-section {
-  padding: 40px;
-}
-
-.skills .grid {
+.dashboard {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-}
-
-.skills div {
-  background: #161b22;
-  padding: 10px;
-  border: 1px solid #00ff9c;
-  text-align: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 15px;
+  padding: 30px;
 }
 
 .card {
-  background: #161b22;
+  background: #11161d;
+  border: 1px solid #1f2933;
   padding: 20px;
-  margin: 10px 0;
-  border-left: 4px solid #00ff9c;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,255,156,0.1);
+  transition: 0.3s;
 }
 
-a {
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(0,255,156,0.3);
+}
+
+.ok {
   color: #00ff9c;
+  font-weight: bold;
+}
+
+.projects {
+  padding: 30px;
+}
+
+canvas {
+  width: 100%;
 }
