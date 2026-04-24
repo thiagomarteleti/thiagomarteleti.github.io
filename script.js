@@ -1,37 +1,42 @@
-const text = [
-  "Monitoring databases...",
-  "Checking performance...",
-  "Backup completed...",
-  "System online ✔"
-];
+// typing effect
+const text = ["Monitoring...", "Optimizing...", "All systems operational ✔"];
+let i = 0, j = 0;
 
-let i = 0;
-let j = 0;
-let currentText = '';
-let isDeleting = false;
-
-function type() {
-  const element = document.querySelector('.typing');
-
-  if (i < text.length) {
-    if (!isDeleting && j <= text[i].length) {
-      currentText = text[i].substring(0, j++);
-    } else if (isDeleting && j >= 0) {
-      currentText = text[i].substring(0, j--);
-    }
-
-    element.textContent = currentText;
-
-    if (j === text[i].length) isDeleting = true;
-    if (j === 0 && isDeleting) {
-      isDeleting = false;
-      i++;
-    }
-  } else {
-    i = 0;
+function typing() {
+  let el = document.querySelector('.typing');
+  el.textContent = text[i].substring(0, j++);
+  
+  if (j > text[i].length) {
+    setTimeout(() => {
+      j = 0;
+      i = (i + 1) % text.length;
+    }, 1500);
   }
 
-  setTimeout(type, isDeleting ? 50 : 100);
+  setTimeout(typing, 80);
 }
 
-type();
+typing();
+
+// chart
+const ctx = document.getElementById('chart1');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['1','2','3','4','5','6'],
+    datasets: [{
+      label: 'Performance',
+      data: [10,20,15,30,25,40],
+      borderColor: '#00ff9c',
+      tension: 0.4
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false }},
+    scales: {
+      x: { display: false },
+      y: { display: false }
+    }
+  }
+});
